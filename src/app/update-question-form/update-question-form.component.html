@@ -1,0 +1,72 @@
+<div class="container">
+    <!-- <form> -->
+    <!-- <div> -->
+    <div *ngIf="item.question">
+        <div *ngIf="item.question !== null || undefined">
+            <mat-form-field appearance="legacy">
+                <mat-label>Select question type:</mat-label>
+                <mat-select (change)="updateAnswer($event, type)" [(value)]="item.type">
+                    <mat-option *ngFor="let type of types" [value]="type"> {{ type }} </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearnace="legacy">
+                <mat-label>Add question</mat-label>
+                <textarea (change)="updateAnswer($event, 'question')" matInput placeholder="Ex. Select the all the languages you know" [value]="item.question"></textarea>
+                <mat-error>error!</mat-error>
+            </mat-form-field>
+            <div class="row-100">
+                <div class="col-90">
+                    <mat-form-field appearnace="legacy">
+                        <mat-label>Add option 1</mat-label>
+                        <input matInput (change)="updateAnswer($event, 'choice1')" placeholder="Ex. Javascript" [value]="item.choice1" />
+                        <mat-error>error!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-10 text_center">
+                    <mat-checkbox></mat-checkbox>
+                </div>
+            </div>
+
+            <div class="row-100">
+                <div class="col-90">
+                    <mat-form-field appearnace="legacy">
+                        <mat-label>Add option 2</mat-label>
+                        <input matInput (change)="updateAnswer($event, 'choice2')" placeholder="Ex. Java" [value]="item.choice2" />
+                        <mat-error>error!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-10 text_center">
+                    <mat-checkbox></mat-checkbox>
+                </div>
+            </div>
+
+            <div class="row-100">
+                <div class="col-90">
+                    <mat-form-field appearnace="legacy">
+                        <mat-label>Add option 3</mat-label>
+                        <input matInput (change)="updateAnswer($event, 'choice3')" placeholder="Ex. Python" [value]="item.choice3" />
+                        <mat-error>error!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-10 text_center">
+                    <mat-checkbox></mat-checkbox>
+                </div>
+            </div>
+
+            <!-- <div formArrayName="comment3_arr">
+                        <div *ngFor="let comment3 of question['controls'].comment3_arr['controls']; let icomment3 = index">
+                            <div [formGroupName]="icomment3">
+                                <mat-form-field appearnace="legacy">
+                                    <mat-label>Add additional comment</mat-label>
+                                    <input formControlName="comment_desc" matInput placeholder="Ex. Additional information" />
+                                    <mat-error>error!</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+        </div>
+    </div>
+</div>

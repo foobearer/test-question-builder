@@ -1,0 +1,51 @@
+[ ] interface
+
+  questions :[ <---- formBuilder.array([ function create ])
+    description: string,
+    type: string,
+    answer: string,
+    isRequired: boolean,
+    choices: {
+        choice1: [
+            isSelected: boolean,
+            description: string,
+            comments: [] <---- formBuilder.array([ function create ])
+        ],
+        choice2: [
+            isSelected: boolean,
+            description: string,
+            comments: []
+        ],
+        choice3: [
+            isSelected: boolean,
+            description: string,
+            comments: []
+        ],
+        others: [
+            isChecked: boolean,
+            isSelected: boolean
+        ]
+    }
+  ]
+        
+[ ] two forms and will be sharing one questionArray to update values
+[ ] form will be loaded on initialization, this will then display question form.
+[ ] on add question, values will be added to question FormArray 
+[ ] define an instance to hold questionArray values
+[ ] create another component (question-list-preview) to display question list, this will accept questionArray values.
+    [ ] question-list-preview will determine the question type and display needed formControl accordingly.
+    [ ] this should accept anwer/s selected by user.
+    [ ] Edit/Delete button is an added feature of question-list-component.
+        [ ] Edit event will then let the user modify submitted question.
+        [ ] Delete event will delete a question from submitted question.
+    [ ] review answers button will bring you to a new page and will display all answers submitted.
+        [ ] page will take updated values from questionArray.
+
+
+
+
+[ ] add validation
+[ ] add edit/delete functionality
+[ ] refactor code
+    -use nested choices
+    -

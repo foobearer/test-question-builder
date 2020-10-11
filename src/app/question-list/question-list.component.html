@@ -1,0 +1,95 @@
+<span>Question list</span>
+<div class="container">
+    <div class="questions" *ngFor="let item of questions; let item_i = index">
+        <div [ngSwitch]="item.type">
+            <div class="edit text_right" *ngIf="item.question">
+                <button mat-button (click)="toggleEditBtn($event.target, item_i)">Edit/Delete</button>
+                <button mat-raised-button (click)="deleteItem(item_i)" *ngIf="formIndex === item_i">Delete</button>
+            </div>
+            <div class="question-container" *ngIf="formIndex !== item_i">
+                <div class="question">
+                    <span *ngIf="item.question">{{item_i}}.</span><label> {{ item.question }} </label>
+                </div>
+                <div *ngSwitchCase="'paragraph'">
+                    <mat-form-field appearnace="legacy">
+                        <mat-label>Add answer</mat-label>
+                        <textarea (change)="addAnswer($event.target.value, item_i)" matInput placeholder="Ex. Answer"></textarea>
+                        <mat-error>error!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngSwitchCase="'checkbox'">
+                    <div class="row-100" *ngIf="item.choice1">
+                        <div class="col-10 text_center">
+                            <mat-checkbox (change)="addAnswer(item.choice1, item_i, 'checkbox', $event.checked)"></mat-checkbox>
+                        </div>
+                        <div class="col-90">
+                            <label> {{ item.choice1 }} </label>
+                            <div class="info">
+                                <span *ngFor="let ca of item.comment1_arr">
+                                    {{ ca.comment_desc }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-100" *ngIf="item.choice2">
+                        <div class="col-10 text_center">
+                            <mat-checkbox (change)="addAnswer(item.choice2, item_i, 'checkbox', $event.checked)"></mat-checkbox>
+                        </div>
+                        <div class="col-90">
+                            <label> {{ item.choice2 }} </label>
+                            <div class="info">
+                                <span *ngFor="let i of item.comment2_arr">
+                                    {{ i.comment_desc }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-100" *ngIf="item.choice3">
+                        <div class="col-10 text_center">
+                            <mat-checkbox (change)="addAnswer(item.choice3, item_i, 'checkbox', $event.checked)"></mat-checkbox>
+                        </div>
+                        <div class="col-90">
+                            <label> {{ item.choice3 }} </label>
+                            <div class="info">
+                                <span *ngFor="let i of item.comment3_arr">
+                                    {{ i.comment_desc }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'radio'">
+                    <div class="row-100">
+                        <div class="col-10">
+                            <mat-radio-button (change)="addAnswer($event.value, item_i)" [value]="item.choice1"></mat-radio-button>
+                        </div>
+                        <div-col-90>
+                            <label> {{ item.choice1 }} </label>
+                        </div-col-90>
+                    </div>
+                    <div class="row-100">
+                        <div class="col-10">
+                            <mat-radio-button (change)="addAnswer($event.value, item_i)" [value]="item.choice2"></mat-radio-button>
+                        </div>
+                        <div-col-90>
+                            <label> {{ item.choice2 }} </label>
+                        </div-col-90>
+                    </div>
+                    <div class="row-100">
+                        <div class="col-10">
+                            <mat-radio-button (change)="addAnswer($event.value, item_i)" [value]="item.choice3"></mat-radio-button>
+                        </div>
+                        <div-col-90>
+                            <label> {{ item.choice3 }} </label>
+                        </div-col-90>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <update-question-form [item]="item" *ngIf="formIndex === item_i"></update-question-form>
+    </div>
+
+    <div class="preview text_center" *ngIf="questions.length > 1">
+        <button mat-raised-button (click)="reviewAnswer()"> Review Answers </button>
+    </div>
+</div>

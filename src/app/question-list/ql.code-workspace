@@ -1,0 +1,20 @@
+{
+    "folders": [
+		{
+			"path": "../../../../list-question-app"
+		},
+		{
+			"path": "../../../../../foobearer-git"
+		},
+		{
+			"path": "../../../../../resources/AngularTraining"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../typescript"
+		}
+	],
+    "settings": {}
+}

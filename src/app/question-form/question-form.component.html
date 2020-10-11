@@ -1,0 +1,104 @@
+<div class="container">
+    <form [formGroup]="form">
+        <div formArrayName="question_arr">
+            <div *ngFor="let question of form['controls'].question_arr['controls']; let iquestion = index">
+                <div [formGroupName]="iquestion" *ngIf="iquestion == 0">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Select question type:</mat-label>
+                        <mat-select formControlName="type">
+                            <mat-option *ngFor="let type of types" [value]="type"> {{ type }} </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearnace="legacy">
+                        <mat-label>Add question</mat-label>
+                        <textarea formControlName="question" matInput placeholder="Ex. Select the all the languages you know"></textarea>
+                        <mat-error>error!</mat-error>
+                    </mat-form-field>
+                    <div class="row-100">
+                        <div class="col-90">
+                            <mat-form-field appearnace="legacy">
+                                <mat-label>Add option 1</mat-label>
+                                <input formControlName="choice1" matInput placeholder="Ex. Javascript" />
+                                <mat-error>error!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-10 text_center">
+                            <mat-checkbox (change)="addComment(iquestion, $event.checked, 'comment1_arr')"></mat-checkbox>
+                        </div>
+                    </div>
+
+                    <div formArrayName="comment1_arr">
+                        <div *ngFor="let comment1 of question['controls'].comment1_arr['controls']; let icomment1 = index">
+                            <div [formGroupName]="icomment1">
+                                <mat-form-field appearnace="legacy">
+                                    <mat-label>Add additional comment</mat-label>
+                                    <input formControlName="comment_desc" matInput placeholder="Ex. Additional information" />
+                                    <mat-error>error!</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-100">
+                        <div class="col-90">
+                            <mat-form-field appearnace="legacy">
+                                <mat-label>Add option 2</mat-label>
+                                <input formControlName="choice2" matInput placeholder="Ex. Java" />
+                                <mat-error>error!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-10 text_center">
+                            <mat-checkbox (change)="addComment(iquestion, $event.checked, 'comment2_arr')"></mat-checkbox>
+                        </div>
+                    </div>
+
+
+                    <div formArrayName="comment2_arr">
+                        <div *ngFor="let comment2 of question['controls'].comment2_arr['controls']; let icomment2 = index">
+                            <div [formGroupName]="icomment2">
+                                <mat-form-field appearnace="legacy">
+                                    <mat-label>Add additional comment</mat-label>
+                                    <input formControlName="comment_desc" matInput placeholder="Ex. Additional information" />
+                                    <mat-error>error!</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-100">
+                        <div class="col-90">
+                            <mat-form-field appearnace="legacy">
+                                <mat-label>Add option 3</mat-label>
+                                <input formControlName="choice3" matInput placeholder="Ex. Python" />
+                                <mat-error>error!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-10 text_center">
+                            <mat-checkbox (change)="addComment(iquestion, $event.checked, 'comment3_arr')"></mat-checkbox>
+                        </div>
+                    </div>
+
+                    <div formArrayName="comment3_arr">
+                        <div *ngFor="let comment3 of question['controls'].comment3_arr['controls']; let icomment3 = index">
+                            <div [formGroupName]="icomment3">
+                                <mat-form-field appearnace="legacy">
+                                    <mat-label>Add additional comment</mat-label>
+                                    <input formControlName="comment_desc" matInput placeholder="Ex. Additional information" />
+                                    <mat-error>error!</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="text_center">
+            <button mat-raised-button (click)="addQuestion()">Add Question</button>
+        </div>
+
+    </form>
+</div>

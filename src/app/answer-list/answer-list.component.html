@@ -1,0 +1,16 @@
+<div class="container">
+    <h4>Answers:</h4>
+    <ul>
+        <div class="answers" *ngFor="let item of data">
+            <li class="item" *ngIf="item.question">
+                <div>
+                    {{ item.question }}
+                </div>
+                <div class="answer" *ngFor="let answer of item.answer">
+                    <label> {{ answer }} </label>
+                </div>
+            </li>
+        </div>
+
+    </ul>
+</div>

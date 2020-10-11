@@ -1,0 +1,36 @@
+.text_right {
+    text-align: right;
+}
+
+.container {
+    width: 100%;
+    mat-form-field {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+.row-100 {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    .col-50 {
+        width: 50%;
+    }
+    .col-90 {
+        width: 90%;
+    }
+    .col-10 {
+        width: 10%;
+    }
+}
+
+.text_center {
+    text-align: center;
+}
+
+.info {
+    font-style: inherit;
+    font-weight: 100;
+    font-size: 12px;
+}
